@@ -1,0 +1,23 @@
+# Google App Engine configuration (alternative to Cloud Run)
+runtime: python311
+
+# Instance configuration
+instance_class: F2
+automatic_scaling:
+  min_instances: 0
+  max_instances: 10
+  target_cpu_utilization: 0.6
+
+# Environment variables (set these in Google Cloud Console)
+env_variables:
+  DEMO_MODE: "false"
+  # Add your API keys in Google Cloud Console:
+  # GEMINI_API_KEY: "your-gemini-api-key"
+  # BRIA_API_KEY: "your-bria-api-key"
+  # YOUTUBE_API_KEY: "your-youtube-api-key"
+
+# Handlers
+handlers:
+- url: /.*
+  script: auto
+  secure: always
